@@ -3,7 +3,10 @@ from datetime import datetime, timezone, timedelta
 import sys
 import os
 
-sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+# Ensure the project root is in the path for imports
+project_root = os.path.dirname(os.path.abspath(__file__))
+if project_root not in sys.path:
+    sys.path.insert(0, project_root)
 
 from database.db_setup import get_connection
 from streamlit_autorefresh import st_autorefresh
